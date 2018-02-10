@@ -1,7 +1,7 @@
 CC       =  gcc
 CFLAGS   = -Wall -O2 -g
-LIB      = -lSDL -lGLU -lGL -lm  
-INCLUDES = 
+LIB      = -L/usr/X11R6/lib -lSDL -lGLU -lGL -lm -lX11
+INCLUDES = -I/usr/X11R6/include
 
 OBJ      = minimal.o 
 RM       = rm -f
@@ -34,5 +34,3 @@ tar : clean
 	@echo "TAR"
 	@echo "**************************"
 	cd .. && tar cvfz $(BACKUP) $(DIRNAME)
-
-
