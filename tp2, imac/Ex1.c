@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
   }
   
   setVideoMode();
-  SDL_WM_SetCaption("TD1 - EX 06", NULL);
+  SDL_WM_SetCaption("TD2 - EX 01", NULL);
   
   unsigned int currentColor = 1; /* couleur rouge par defaut */
   int mode = 0; /* Mode dessin par defaut */
@@ -53,14 +53,6 @@ int main(int argc, char** argv) {
     Uint32 startTime = SDL_GetTicks();
     
     glClear(GL_COLOR_BUFFER_BIT);
-    
-    if(mode == 1) {
-      /* Mode selection de couleur */
-      drawColorSelectionView();
-    } else {
-      /* Mode dessin */
-      DrawPrimitives(primitives);
-    }
     
     SDL_GL_SwapBuffers();
     
@@ -81,41 +73,24 @@ int main(int argc, char** argv) {
             AddPoint(AllocPointLink(-1 + 2. * e.button.x / WINDOW_WIDTH, - (-1 + 2. * e.button.y / WINDOW_HEIGHT), COLORS[currentColor * 3], COLORS[currentColor * 3 + 1], COLORS[currentColor * 3 + 2]), &primitives->points);
           }
         break;
-        
-        case SDL_KEYDOWN:
-          /* Maintenir espace appuyÃ© permet de passer en mode selection de couleur */
-          if(e.key.keysym.sym == SDLK_SPACE) {
-            mode = 1;
-          }
-        break;
+
+        case SDL_MOUSEBUTTONDOWN:
+          /*if(e.button.x == SDL_BUTTON_RIGHT){
+
+          } */
+          break;
         
         case SDL_KEYUP:
-          if(e.key.keysym.sym == SDLK_SPACE) {
-            mode = 0;
-          } else {
-            /* Si une touche de choix de primitive est relachÃ©e, on ajoute un nouveau maillon
-             * dans la liste de primitive. Les futur points cliquÃ© seront ajoutÃ© dans celui ci. */
-            switch(e.key.keysym.sym) {
-              case SDLK_p:
-                AddPrimitiveLink(AllocPrimitiveLink(GL_POINTS), &primitives);
-                break;
-              case SDLK_l:
-                AddPrimitiveLink(AllocPrimitiveLink(GL_LINES), &primitives);
-                break;
-              case SDLK_t:
-                AddPrimitiveLink(AllocPrimitiveLink(GL_TRIANGLES), &primitives);
-                break;
-              default:
-                break;
-            }
-          }
+          if(e.key.keysym.sym == SDLK_q) {
+            loop = 0;
+          } 
         break;
           
-        case SDL_VIDEORESIZE:
+        /*case SDL_VIDEORESIZE:
           WINDOW_WIDTH = e.resize.w;
           WINDOW_HEIGHT = e.resize.h;
           setVideoMode();
-          break;
+          break;*/
           
         default:
           break;
@@ -144,7 +119,7 @@ void reshape() {
 }
 
 void setVideoMode() {
-  if(NULL == SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, BIT_PER_PIXEL, SDLK_OPER| SDL_RESIZABLE)) {
+  if(NULL == SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, BIT_PER_PIXEL, SDLK_OPER/*| SDL_RESIZABLE*/)) {
     fprintf(stderr, "Impossible d'ouvrir la fenetre. Fin du programme.\n");
     exit(EXIT_FAILURE);
   }
