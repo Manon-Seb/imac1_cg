@@ -1,8 +1,10 @@
 #include <SDL2/SDL.h>
 #ifdef __APPLE__
-#include <GLUT/glut.h>
+#include <openGL/gl.h>
+#include <openGL/glu.h>
 #else
-#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #endif
 #include <stdlib.h>
 #include <stdio.h>
@@ -111,11 +113,11 @@ int main(int argc, char** argv) {
           }
         break;
           
-        case SDL_VIDEORESIZE:
+        /*case SDL_VIDEORESIZE:
           WINDOW_WIDTH = e.resize.w;
           WINDOW_HEIGHT = e.resize.h;
           setVideoMode();
-          break;
+          break;*/
           
         default:
           break;
@@ -144,7 +146,7 @@ void reshape() {
 }
 
 void setVideoMode() {
-  if(NULL == SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, BIT_PER_PIXEL, SDLK_OPER| SDL_RESIZABLE)) {
+  if(NULL == SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, BIT_PER_PIXEL, SDLK_OPER/*| SDL_RESIZABLE*/)) {
     fprintf(stderr, "Impossible d'ouvrir la fenetre. Fin du programme.\n");
     exit(EXIT_FAILURE);
   }

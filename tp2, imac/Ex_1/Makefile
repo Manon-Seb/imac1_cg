@@ -3,9 +3,9 @@ CFLAGS   = -Wall -O2 -g
 LIB      = -I/Library/Frameworks/SDL.framework/Headers -I/opt/local/include `sdl-config --cflags --libs` -framework Cocoa -framework OpenGL
 INCLUDES = -I/usr/X11R6/include
 
-OBJ      = minimal.o 
+OBJ      = Ex1.o 
 RM       = rm -f
-BIN      = minimal
+BIN      = Ex1
 DIRNAME  = $(shell basename $$PWD)
 BACKUP   = $(shell date +`basename $$PWD`-%m.%d.%H.%M.tgz)
 STDNAME  = $(DIRNAME).tgz
@@ -18,8 +18,8 @@ $(BIN) : $(OBJ)
 	@echo "                 to execute type: ./$(BIN) &"
 	@echo "--------------------------------------------------------------"
 
-minimal.o : minimal.c
-	@echo "compile minimal"
+Ex1.o : Ex1.c
+	@echo "compile exercice"
 	$(CC) $(CFLAGS) -c $<  
 	@echo "done..."
 

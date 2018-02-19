@@ -1,7 +1,9 @@
 #ifdef __APPLE__
-#include <GLUT/glut.h>
+#include <openGL/gl.h>
+#include <openGL/glu.h>
 #else
-#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #endif
 
 /* Structures */

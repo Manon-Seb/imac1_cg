@@ -1,6 +1,11 @@
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
+#ifdef __APPLE__
+#include <openGL/gl.h>
+#include <openGL/glu.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
 #include <stdlib.h>
 #include <stdio.h>
 
