@@ -9,10 +9,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 
 /* Dimensions de la fenêtre */
-static unsigned int WINDOW_WIDTH = 1024;
-static unsigned int WINDOW_HEIGHT = 748;
+static unsigned int WINDOW_WIDTH = 800;
+static unsigned int WINDOW_HEIGHT = 800;
 
 /* Nombre de bits par pixel de la fenêtre */
 static const unsigned int BIT_PER_PIXEL = 32;
@@ -192,6 +193,19 @@ void drawLandmark(){
     glEnd();
 }
 
+/* Cercle */
+void drawCircle(float rayon, float nbFaces, float angle){
+    int i;
+    glColor3ub(150,100,0);
+    /* Cercle vide 
+    utilise GL_POLYGON pour un cercle rempli*/
+    glBegin(GL_LINE_LOOP);
+    for(i=0 ; i<nbFaces ; i++){
+        angle = 2*M_PI*i/nbFaces;
+        glVertex2f(cos(angle)*rayon, sin(angle)*rayon);
+    }
+    glEnd();
+}
 
 int main(int argc, char** argv) {
 
@@ -242,6 +256,7 @@ int main(int argc, char** argv) {
         /* Dessin des fonctions */
         drawSquare();
         drawLandmark();
+        drawCircle(0.5, 40.0, 5.0);
 
         /* Boucle traitant les evenements */
         SDL_Event e;
