@@ -103,7 +103,7 @@ void drawCircle(float rayon, float nbFaces, float angle){
 
 void drawBlueCircle(float rayon, float nbFaces, float angle){
     int i;
-    glColor3ub(0,0,255);
+    glColor3ub(0,100,255);
     glBegin(GL_LINE_LOOP);
     for(i=0 ; i<nbFaces ; i++){
         angle = 2*M_PI*i/nbFaces;
@@ -149,7 +149,7 @@ int main(int argc, char** argv) {
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity(); 
         glPushMatrix();
-        glTranslatef((1.0/8.0), (2.0/8.0), 0.0);
+        /*glTranslatef((1.0/8.0), (2.0/8.0), 0.0);
         drawCircle(0.5, 40.0, 5.0);
 
         glRotatef(45, 0.0, 0.0, 1.0);
@@ -158,7 +158,12 @@ int main(int argc, char** argv) {
         glRotatef(45, 0.0, 0.0, 1.0);
         glTranslatef((2.0/8.0), 0.0, 0.0);
         drawSquarePurple();
-        drawSquareYellow(0.5, 0.5);
+        drawSquareYellow(0.5, 0.5);*/
+        int i;
+        for(i=0 ; i<1000 ; i++){
+            glTranslatef((rand()%100), 0.0, 0.0);
+            drawBlueCircle(0.2, 40.0, 5.0);
+        }
         glPopMatrix();
 
         /* Boucle traitant les evenements */
