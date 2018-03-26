@@ -1,6 +1,5 @@
-/*#ifdef GEOMETRY.H
-#define GEOMETRY.H
-#endif*/
+#ifndef GEOMETRY
+#define GEOMETRY
 
 typedef struct vec3{
 	float x, y, z;
@@ -31,3 +30,5 @@ Vector3D normalize(Vector3D A);
 // affiche le contenu du vecteur et du point passés en paramètres
  void printVector3D(Vector3D v);
  void printPoint3D(Point3D p);
+
+ #endif

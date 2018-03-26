@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -O2 -g
-LDFLAGS = -lSDL -lm
-APP_BIN = raytracer
+CFLAGS = -Wall -O2 -g 
+LDFLAGS = -lSDL -lm 
+APP_BIN = raytracer 
 SRC_PATH = src
 OBJ_PATH = obj
 INC_PATH = -I include
