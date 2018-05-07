@@ -15,7 +15,7 @@
 #include <GL/glut.h>
 #endif
 
-#define is_sep(c) (c == ' ' || c == '\t' || c == '\n' || c == EOF)
+#define is_sep(c) (c == ' ' || c == '\t' || c == '\n' || c == EOF) /* définition de tous les séparateurs */
 #define acces_pixel(e,w,i,j) (*((unsigned int *)e->pixels + w * i + j))
 
 static unsigned int WINDOW_WIDTH = 1600;
@@ -23,8 +23,9 @@ static unsigned int WINDOW_HEIGHT = 800;
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 
-/* Pour récupérer la taille, pourquoi ne pas tout simplement lire l'en-tête
-du fichier PPM ? */
+/* Ces deux variables posent problème : il faudrait voir pour que nous n'ayons pas
+à leur attribuer une valeur à la main. Il faudrait, comme dans le main, qu'elles se voient 
+attribuer les valeurs largeur/hauteur de l'en-tête */
 int w=40, h=10;
 
 
@@ -33,17 +34,17 @@ unsigned char next_char(FILE * f)
 {
     char tmp;
     tmp = fgetc(f);
-    while (is_sep(tmp)) // Skip separator
+    while (is_sep(tmp)) // on ignore les séparateurs
         tmp = fgetc(f);
-    while (tmp == '#') {    // Skip comments
-        while (tmp != '\n')
+    while (tmp == '#') {    // on ignore les commentaires
+        while (tmp != '\n') 
             tmp = fgetc(f);
         tmp = fgetc(f);
     }
     return tmp;
 }
  
-unsigned int next_int(FILE * f) // Return next integer if using P3 (ascii mode)
+unsigned int next_int(FILE * f) // retourne l'int suivant si nous sommes en P3
 {
     unsigned int res = 0;
     char tmp;
@@ -60,8 +61,8 @@ Rappel de la structure de l'header :
 
 Nombre magique
 Largeur Hauteur
-Valeur max de couleur*/
-Header get_header(FILE * f) // Return header
+Valeur max de couleur (255 en P3) */
+Header get_header(FILE * f) // retourne l'header
 {
     Header head;
     /* Format = P3 dans notre cas */

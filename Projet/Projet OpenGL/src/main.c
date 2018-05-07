@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
 
   char *filename = "test.ppm";
   FILE *f = fopen("test.ppm", "r");
-  int i,j,k;
+
   /* Récupération des infos de l'header de l'image */
   Header header = get_header(f);
   /* Affichage des infos (vérif) */
@@ -84,18 +84,12 @@ int main(int argc, char** argv) {
   int largeur = header.width;
   int hauteur = header.height;
 
+  /* Je vérifie que les valeurs ont été attribuées */
   printf("%d %d\n", largeur, hauteur);
 
   int levelarray[largeur][hauteur][3];
 
   createTab(levelarray,filename);
-    for(i=0 ; i<w ; i++){
-    for(j=0 ; j<h ; j++){
-      for(k=0 ; k<3 ; k++){
-        printf("%d\n", levelarray[i][j][k]);
-      }
-    }
-  }
 
   /* Game view */
   if(-1 == SDL_Init(SDL_INIT_VIDEO)) {

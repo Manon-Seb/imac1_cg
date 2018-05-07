@@ -3,9 +3,7 @@
 
 typedef struct vec3{
 	float x, y, z;
-}Vec3;
-
-typedef Vec3 *Point3D, *Vector3D;
+}Point3D, Vector3D;
 
 // construit point (x,y,z)
 Point3D pointXYZ(float x, float y, float z);
@@ -21,14 +19,14 @@ Vector3D subVector(Vector3D A, Vector3D B);
 // fonctions de multiplication et division d'un vecteur par un scalaire
 Vector3D multVector(Vector3D V, float a);
 Vector3D divVector(Vector3D V, float a);
-// fonction calculant le produit sclaire de deux vecteurs
+// fonction calculant le produit scalaire de deux vecteurs
 float dot(Vector3D A, Vector3D B);
 // fonction calculant la norme d'un vecteur
 float norm(Vector3D A);
 // fonction retournant le vecteur normalisé passé en paramètre
 Vector3D normalize(Vector3D A);
 // affiche le contenu du vecteur et du point passés en paramètres
- void printVector3D(Vector3D v);
- void printPoint3D(Point3D p);
+void printVector3D(Vector3D v);
+void printPoint3D(Point3D p);
 
  #endif

@@ -11,11 +11,11 @@ typedef struct Sphere{
 } Sphere;
 
 typedef struct Cube{
-	float pointMin, pointMax;
+	Point3D pointMin, pointMax;
 	Color3f color;
 } Cube;
 
-Sphere createSphere(Point3D pCenter, Color3f c);
-Cube createCube(float pMin, float pMax, Color3f c);
+Sphere createSphere(Point3D pCenter, int r, Color3f c);
+Cube createCube(Point3D pMin, Point3D pMax, Color3f c);
 
 #endif
