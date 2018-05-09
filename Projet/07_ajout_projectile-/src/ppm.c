@@ -23,8 +23,8 @@ static unsigned int WINDOW_HEIGHT = 800;
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 
-/* Ces deux variables posent problème : il faudrait voir pour que nous n'ayons pas
-à leur attribuer une valeur à la main. Il faudrait, comme dans le main, qu'elles se voient 
+/* Ces deux variables posent problème : il faudrait voir pour qu'on ne nous n'ayons pas
+à leur attribuer une valeur à la main. Il faudrait, comme dans le main, qu'elles se voient
 attribuer les valeurs largeur/hauteur de l'en-tête */
 int w=40, h=10;
 
@@ -37,13 +37,13 @@ unsigned char next_char(FILE * f)
     while (is_sep(tmp)) // on ignore les séparateurs
         tmp = fgetc(f);
     while (tmp == '#') {    // on ignore les commentaires
-        while (tmp != '\n') 
+        while (tmp != '\n')
             tmp = fgetc(f);
         tmp = fgetc(f);
     }
     return tmp;
 }
- 
+
 unsigned int next_int(FILE * f) // retourne l'int suivant si nous sommes en P3
 {
     unsigned int res = 0;
@@ -56,7 +56,7 @@ unsigned int next_int(FILE * f) // retourne l'int suivant si nous sommes en P3
     return res;
 }
 
-/* Lecture et stockage des informations de l'header du fichier 
+/* Lecture et stockage des informations de l'header du fichier
 Rappel de la structure de l'header :
 
 Nombre magique
@@ -126,29 +126,7 @@ void drawRect(int R, int V, int B){
 }
 
 /* [3] = RVB*/
-void drawLevel(int level[w][h][3]){
-  int i=0;
-  int j=0;
-  int x=-w/2;
-  int y=h/2;
 
-
-  while (j<h){
-    i=0;
-    x=-w/2;
-    while (i<w){
-      glMatrixMode(GL_MODELVIEW);
-      glLoadIdentity();
-      glPushMatrix();
-      glScalef(w/2,0.1,0);
-      glTranslatef(x+i,y-j,0);
-      drawRect(level[i][j][0],level[i][j][1],level[i][j][2]);
-      glPopMatrix();
-      i++;
-    }
-    j++;
-  }
-}
 
 /* Sauvegarde du fichier  ppm dans un tableau */
 int createTab(int levelarray[w][h][3],char *filename){

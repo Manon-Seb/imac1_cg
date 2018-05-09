@@ -23,7 +23,7 @@ int intersectsSphere(Ray r, Sphere s, Intersection* i);
 /* création et initialisation des champs de la structure scene */
 Scene createScene(Sphere tabs[10], Cube tabc[10]);
 
-void addCubeToScene(Scene* scne, Cube cube);
+void addCubeToScene(Scene* scene, Cube cube);
 void addSphereToScene(Scene* scene, Sphere sphere);
 
 #endif
