@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
 
     // TODO: Chargement et traitement de la texture
     SDL_Surface *image;
-    image = SDL_LoadBMP("tiger.bmp");
+    image = SDL_LoadBMP("galaxy.bmp");
     if(image == NULL){
         fprintf(stderr, "Impossible de charger l'image.\n");
         return EXIT_FAILURE;
@@ -90,17 +90,17 @@ int main(int argc, char** argv) {
         glLoadIdentity(); 
         glPushMatrix();
             // transformations
-            glRotatef(45,0.0,0.0,1.0);
-            glScalef(0.5,0.5,0.5);
-            glBegin(GL_QUADS);
-            glTexCoord2f(0,1);
-            glVertex2f(-0.5, -0.5);
+            //glRotatef(45,0.0,0.0,1.0);
+            //glScalef(0.5,0.5,0.5);
+            glBegin(GL_POLYGON);
             glTexCoord2f(0,0);
-            glVertex2f(-0.5, 0.5);
+            glVertex2f(-1.0, 1.0);
             glTexCoord2f(1,0);
-            glVertex2f(0.5, 0.5);
+            glVertex2f(1.0, 1.0);
+            glTexCoord2f(0,1);
+            glVertex2f(-1.0, -1.0);
             glTexCoord2f(1,1);
-            glVertex2f(0.5, -0.5);
+            glVertex2f(1.0, -1.0);
             glEnd();
         glPopMatrix();
 
